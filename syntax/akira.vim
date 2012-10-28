@@ -39,7 +39,7 @@ hi def link akiraKey Tag
 syn region akiraString start=/'/ skip=/\\\\\|\\'/ end=/'/
 hi def link akiraString String
 
-syn match akiraNumber /\i\@<!\d\+\%([eE]\d\+\)\?/
+syn match akiraNumber /\i\@<!\(\-\)\?\d\+\%([0-9e,]\+\)\?/
 hi def link akiraNumber Number
 
 syn match akiraFloat /\i\@<!\d*\.\@<!\.\d\+\%([eE]\d\+\)\?/
