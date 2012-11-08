@@ -18,7 +18,7 @@ hi def link akiraIdentifier Normal
 syn match akiraConditional /\<\%(if\|else\|then\)\>/
 hi def link akiraConditional Conditional
 
-syn match akiraKeyword /\<\%(recur\|not\|is\|isnt\|export\|import\)\>/
+syn match akiraKeyword /\<\%(recur\|cond\|not\|is\|isnt\|export\|import\)\>/
 hi def link akiraKeyword Keyword
 
 syn match akiraObject /\<\%(prototype\)\>/
