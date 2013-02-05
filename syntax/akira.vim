@@ -33,6 +33,9 @@ hi def link akiraException Exception
 syn match akiraSpecialVar /\<\%(undefined\|none\|macro\|this\)\>/
 hi def link akiraSpecialVar Type
 
+syn match akiraTypeDefs /\<\%(Function\|Number\|String\|Vector\|Map\|None\|RegExp\|Boolean\|Any\)\>/
+hi def link akiraTypeDefs TypeDef
+
 syn match akiraKey /@[a-zA-Z_$][0-9a-zA-Z_\-$]*[?]\?/
 hi def link akiraKey Tag
 
