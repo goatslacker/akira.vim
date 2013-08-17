@@ -13,31 +13,31 @@ setlocal iskeyword+=-
 setlocal iskeyword+=?
 
 syn match akiraIdentifier /[a-zA-Z_$][0-9a-zA-Z_\-$]*[?]/
-hi def link akiraIdentifier Normal
+hi def link akiraIdentifier Identifier
 
-syn match akiraConditional /\<\%(if\|else\|then\)\>/
+syn keyword akiraConditional if else then
 hi def link akiraConditional Conditional
 
-syn match akiraKeyword /\<\%(recur\|cond\|not\|is\|isnt\|export\|import\)\>/
+syn keyword akiraKeyword recur cond export import let
 hi def link akiraKeyword Keyword
 
-syn match akiraObject /\<\%(prototype\)\>/
-hi def link akiraObject Constant
+syn keyword akiraObject prototype
+hi def link akiraObject Type
 
-syn match akiraBoolean /\<\%(true\|false\)\>/
+syn keyword akiraBoolean true false
 hi def link akiraBoolean Boolean
 
-syn match akiraException /\<\%(try\|catch\|raise\)\>/
+syn keyword akiraException try catch raise
 hi def link akiraException Exception
 
-syn match akiraSpecialVar /\<\%(undefined\|none\|macro\|this\)\>/
-hi def link akiraSpecialVar Type
+syn keyword akiraTypeVar undefined none this
+hi def link akiraTypeVar Type
 
-syn match akiraTypeDefs /\<\%(Function\|Number\|String\|Vector\|Map\|None\|RegExp\|Boolean\|Any\)\>/
+syn keyword akiraTypeDefs Function Number String Vector Maybe Map None RegExp Boolean Any
 hi def link akiraTypeDefs TypeDef
 
 syn match akiraKey /@[a-zA-Z_$][0-9a-zA-Z_\-$]*[?]\?/
-hi def link akiraKey Tag
+hi def link akiraKey Constant
 
 syn region akiraString start=/'/ skip=/\\\\\|\\'/ end=/'/
 hi def link akiraString String
@@ -48,14 +48,21 @@ hi def link akiraNumber Number
 syn match akiraFloat /\i\@<!\d*\.\@<!\.\d\+\%([eE]\d\+\)\?/
 hi def link akiraFloat Float
 
-syn match akiraOperator /++\|+:\|!!\|>=\|>\|<=\|<\|==\|!=\|&&\|||/
+syn keyword akiraOperatorWord is isnt
+syn match akiraOperator /<-\|::\|++\|+:\|!!\|>=\|>\|<=\|<\|==\|!=\|&&\|||/
+hi def link akiraOperatorWord Operator
 hi def link akiraOperator Operator
 
-syn match akiraFunction /->\|fn/
-hi def link akiraFunction Function
+syn keyword akiraFunctionWord fn match
+syn match akiraFunction /->/
+hi def link akiraFunctionWord Special
+hi def link akiraFunction Special
+
+syn keyword akiraSpecial do maybe macro
+hi def link akiraSpecial Special
 
 syn match akiraFunctionCall /[a-zA-Z_$][0-9a-zA-Z_\-$]*[?]\?:/
-hi def link akiraFunctionCall Macro
+hi def link akiraFunctionCall Function
 
 syn keyword akiraTodo TODO FIXME XXX contained
 hi def link akiraTodo Todo
