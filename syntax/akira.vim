@@ -18,7 +18,7 @@ hi def link akiraIdentifier Identifier
 syn keyword akiraConditional if else then
 hi def link akiraConditional Conditional
 
-syn keyword akiraKeyword recur cond export import let module
+syn keyword akiraKeyword recur cond export import let class new do await interface
 hi def link akiraKeyword Keyword
 
 syn keyword akiraObject prototype
@@ -36,13 +36,16 @@ hi def link akiraTypeVar Type
 syn match akiraArguments /&[0-9]*/
 hi def link akiraArguments Type
 
-syn keyword akiraTypeDefs Function Number String Vector Maybe Map None RegExp Boolean Any
+syn keyword akiraTypeDefs Function Number String Vector Maybe Map None RegExp Boolean Any Async typealias
 hi def link akiraTypeDefs TypeDef
 
 syn match akiraKey /@[a-zA-Z_$][0-9a-zA-Z_\-$]*[?]\?/
 hi def link akiraKey Constant
 
-syn region akiraString start=/'/ skip=/\\\\\|\\'/ end=/'/
+syntax match akiraSpecialChars "\v\\%(0|\\x\x\{2\}\|\\u\x\{4\}\|\c[A-Z]|.)"
+hi def link akiraSpecialChars Special
+
+syn region akiraString start=/'/ skip=/\\\\\|\\'/ end=/'/ contains=akiraSpecialChars
 hi def link akiraString String
 
 syn match akiraNumber /\i\@<!\(\-\)\?\d\+\%([0-9e]\+\)\?/
@@ -52,16 +55,16 @@ syn match akiraFloat /\i\@<!\d*\.\@<!\.\d\+\%([eE]\d\+\)\?/
 hi def link akiraFloat Float
 
 syn keyword akiraOperatorWord is isnt not
-syn match akiraOperator /&!\|<-\|::\|++\|+:\|!!\|>=\|>\|<=\|<\|==\|!=\|!\|&&\|||/
+syn match akiraOperator /&!\|::\|++\|+:\|!!\|>=\|>\|<=\|<\|==\|!=\|!\|&&\|||/
 hi def link akiraOperatorWord Operator
 hi def link akiraOperator Operator
 
-syn keyword akiraFunctionWord fn match
+syn keyword akiraFunctionWord fn match async
 syn match akiraFunction /->/
 hi def link akiraFunctionWord Special
 hi def link akiraFunction Special
 
-syn keyword akiraSpecial do maybe macro
+syn keyword akiraSpecial macro
 hi def link akiraSpecial Special
 
 syn keyword akiraTodo TODO FIXME XXX contained
